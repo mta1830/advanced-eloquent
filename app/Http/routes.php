@@ -17,6 +17,21 @@ Route::get('/', function () {
     return Book::all();
 });
 
+Route::get('/delete-multiple',function () {
+    $books = Book::all();
+    return view('destroy',compact('books'));
+});
+
+Route::delete('/destroy',function (Illuminate\Http\Request $request) {
+    $ids = $request->get('ids');
+
+    if (count($ids)){
+        Book::destroy($ids);
+    }
+
+    return back();
+});
+
 Route::get('/registros-softdeletes', function () {
     return Book::onlyTrashed()->get();
 });
