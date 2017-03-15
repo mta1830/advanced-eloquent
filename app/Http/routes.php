@@ -11,10 +11,18 @@
 |
 */
 
-use AdvancedELOQUENT\Book; // Entidad
+// Entidades
+use AdvancedELOQUENT\Book;
+use AdvancedELOQUENT\Category;
 
 Route::get('/', function () {
     return Book::all();
+});
+
+Route::get('/relaciones',function (){
+    $categories = Category::get();
+
+    return view('relationship', compact('categories'));
 });
 
 Route::get('/delete-multiple',function () {
