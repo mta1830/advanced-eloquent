@@ -25,6 +25,12 @@ Route::get('/relaciones',function (){
     return view('relationship', compact('categories'));
 });
 
+Route::get('/relaciones-has',function (){
+    $categories = Category::has('books')->get();
+
+    return view('relationship', compact('categories'));
+});
+
 Route::get('/delete-multiple',function () {
     $books = Book::all();
     return view('destroy',compact('books'));
