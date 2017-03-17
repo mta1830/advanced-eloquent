@@ -31,6 +31,14 @@ Route::get('/relaciones-has',function (){
     return view('relationship', compact('categories'));
 });
 
+Route::get('/relaciones-wherehas',function (){
+    $categories = Category::whereHas('books',function ($query){
+        $query->where('status','public');
+    })->get();
+
+    return view('relationship_video6', compact('categories'));
+});
+
 Route::get('/delete-multiple',function () {
     $books = Book::all();
     return view('destroy',compact('books'));
