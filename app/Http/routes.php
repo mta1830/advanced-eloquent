@@ -14,6 +14,7 @@
 // Entidades
 use AdvancedELOQUENT\Book;
 use AdvancedELOQUENT\Category;
+use AdvancedELOQUENT\User;
 
 Route::get('/', function () {
     return Book::all();
@@ -23,6 +24,13 @@ Route::get('/relaciones',function (){
     $categories = Category::get();
 
     return view('relationship', compact('categories'));
+});
+
+//Many to Many
+Route::get('/m_to_m',function (){
+    $users = User::all();
+
+    return view('manytomany', compact('users'));
 });
 
 Route::get('/relaciones-has',function (){
