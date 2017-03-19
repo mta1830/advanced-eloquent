@@ -33,7 +33,6 @@ Route::get('/m_to_m',function (){
     return view('manytomany.index', compact('users'));
 });
 
-//Many to Many
 Route::get('/qb',function (){
     //$users = DB::table('users')->get();
 
@@ -50,6 +49,17 @@ Route::get('/qb',function (){
             ->get();
 
     return view('querybuilder.index', compact('users'));
+});
+
+Route::get('/qb_p2',function (){
+    $books = DB::table('categories')
+        //->join('','','','')
+        ->join('books','categories.id','=','books.category_id')
+        //->where('books.status','public')
+        ->select('categories.name as category','books.*')
+        ->get();
+
+    return view('querybuilder.index2', compact('books'));
 });
 
 Route::get('edit-m_to_m/{user_id}',[
