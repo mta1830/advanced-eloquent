@@ -62,6 +62,21 @@ Route::get('/qb_p2',function (){
     return view('querybuilder.index2', compact('books'));
 });
 
+Route::get('/m_to_m_p2',function (){
+    $user = User::find(1);
+
+    echo $user->name;
+
+    foreach($user->exams as $exam){
+        echo
+            '<li>'
+            . $exam->title
+            .' Nota '. $exam->pivot->score
+            .' Fecha '. $exam->pivot->created_at
+            .'</li>';
+    }
+});
+
 Route::get('edit-m_to_m/{user_id}',[
     'as' => 'getEdit',
     'uses' => 'UserController@getEditManyToMany'
