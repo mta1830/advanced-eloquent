@@ -34,3 +34,17 @@ $factory->define(AdvancedELOQUENT\Exam::class, function (Faker\Generator $faker)
         'title' => $faker->name,
     ];
 });
+
+$factory->define(AdvancedELOQUENT\Post::class, function (Faker\Generator $faker){
+    return [
+        'title' => $faker->name,
+        'body' => $faker->text,
+    ];
+});
+
+$factory->define(AdvancedELOQUENT\Page::class, function (Faker\Generator $faker){
+    return [
+        'name' => $faker->name,
+        'body' => $faker->text,
+    ];
+});

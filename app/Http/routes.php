@@ -14,6 +14,7 @@
 // Entidades
 use AdvancedELOQUENT\Book;
 use AdvancedELOQUENT\Category;
+use AdvancedELOQUENT\Page;
 use AdvancedELOQUENT\User;
 
 Route::get('/', function () {
@@ -30,6 +31,15 @@ Route::get('/relaciones',function (){
     $categories = Category::get();
 
     return view('relationship', compact('categories'));
+});
+
+Route::get('/polimorfismo',function (){
+    $page = Page::find(6);
+    
+    echo $page->name;
+    foreach ($page->comments as $comment) {
+        echo '<li>'. $comment->body .'</li>';
+    }
 });
 
 //Many to Many
