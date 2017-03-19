@@ -14,8 +14,8 @@ class BookUserTableSeeder extends Seeder
     {
         for ($i=1 ; $i<=10 ; $i++){
             $user = User::find($i);
-            for ($j=1 ; $j<=3 ; $j++){
-                $user->books()->attach(rand(1,20));
+            for ($j=1 ; $j<=rand(1,10) ; $j++){
+                $user->manyBooks()->attach(rand(1,20));
             }
         }
     }

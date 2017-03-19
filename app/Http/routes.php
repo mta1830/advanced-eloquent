@@ -33,6 +33,25 @@ Route::get('/m_to_m',function (){
     return view('manytomany.index', compact('users'));
 });
 
+//Many to Many
+Route::get('/qb',function (){
+    //$users = DB::table('users')->get();
+
+    //$users = DB::table('users')->where('name','Thurman Friesen')->first();
+    //return $users->name;
+
+    //$email = DB::table('users')
+    //            ->where('name','Thurman Friesen')
+    //            ->value('email');
+    //return $email;
+
+    $users = DB::table('users')
+            ->select('name as user_name','email as user_email')
+            ->get();
+
+    return view('querybuilder.index', compact('users'));
+});
+
 Route::get('edit-m_to_m/{user_id}',[
     'as' => 'getEdit',
     'uses' => 'UserController@getEditManyToMany'
