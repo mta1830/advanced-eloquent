@@ -20,6 +20,12 @@ Route::get('/', function () {
     return Book::all();
 });
 
+Route::get('/n+1', function () {
+    $books = Book::with('category')->get();
+
+    return view('video13',compact('books'));
+});
+
 Route::get('/relaciones',function (){
     $categories = Category::get();
 
