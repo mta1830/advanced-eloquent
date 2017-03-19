@@ -30,8 +30,18 @@ Route::get('/relaciones',function (){
 Route::get('/m_to_m',function (){
     $users = User::all();
 
-    return view('manytomany', compact('users'));
+    return view('manytomany.index', compact('users'));
 });
+
+Route::get('edit-m_to_m/{user_id}',[
+    'as' => 'getEdit',
+    'uses' => 'UserController@getEditManyToMany'
+]);
+
+Route::put('put-m_to_m/{user_id}',[
+    'as' => 'putEdit',
+    'uses' => 'UserController@putEditManyToMany'
+]);
 
 Route::get('/relaciones-has',function (){
     $categories = Category::has('books')->get();
