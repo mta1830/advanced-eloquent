@@ -15,7 +15,10 @@
 use AdvancedELOQUENT\Book;
 use AdvancedELOQUENT\Category;
 use AdvancedELOQUENT\Page;
+use AdvancedELOQUENT\Post;
 use AdvancedELOQUENT\User;
+use AdvancedELOQUENT\Video;
+
 
 Route::get('/', function () {
     return Book::all();
@@ -35,10 +38,25 @@ Route::get('/relaciones',function (){
 
 Route::get('/polimorfismo',function (){
     $page = Page::find(6);
-    
+
     echo $page->name;
     foreach ($page->comments as $comment) {
         echo '<li>'. $comment->body .'</li>';
+    }
+});
+
+Route::get('/polimorfismo_m_to_m',function (){
+    $post = Post::first();
+    echo 'POST '.$post->title;
+    foreach ($post->tags as $tag)
+    {
+        echo '<li>'.$tag->title.'</li>';
+    }
+    $video = Video::first();
+    echo 'VIDEO '.$video->title;
+    foreach ($video->tags as $tag)
+    {
+        echo '<li>'.$tag->title.'</li>';
     }
 });
 
